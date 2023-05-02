@@ -7,20 +7,34 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ContentView : View {
+    @StateObject var model: ListViewModel = ListViewModel()
+    @State private var selectedTab = 0
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationView {
+            TabView(selection: $selectedTab) {
+                List(model.articles) { article in
+                    NewsRow(article: article)
+                }
+                .tabItem {
+                    Label("News", systemImage: "newspaper")
+                }
+                .tag(0)
+                Image(systemName: "globe")
+                    .tabItem {
+                        Label("Favorite", systemImage: "star.fill")
+                    }
+                    .tag(1)
+                    .navigationTitle(Text("News"))
+            }
         }
-        .padding()
     }
+    
+    
 }
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
 }
+
