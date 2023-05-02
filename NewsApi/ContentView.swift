@@ -25,8 +25,8 @@ struct ContentView : View {
                         Label("Favorite", systemImage: "star.fill")
                     }
                     .tag(1)
-                    .navigationTitle(Text("News"))
             }
+            .navigationTitle(Text("News"))
         }
     }
     

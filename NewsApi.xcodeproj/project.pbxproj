@@ -16,6 +16,9 @@
 		C3E193282A0152FA00F85C3D /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E193272A0152FA00F85C3D /* NetworkService.swift */; };
 		C3E1932A2A01530E00F85C3D /* JSONModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E193292A01530E00F85C3D /* JSONModel.swift */; };
 		C3E1932C2A01562F00F85C3D /* NewsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E1932B2A01562F00F85C3D /* NewsRow.swift */; };
+		C3E193382A01732400F85C3D /* NewsCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E193362A01732400F85C3D /* NewsCoreData.swift */; };
+		C3E193392A01732400F85C3D /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E193372A01732400F85C3D /* CoreDataManager.swift */; };
+		C3E1933C2A01733100F85C3D /* NewsCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C3E1933A2A01733100F85C3D /* NewsCoreData.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +32,9 @@
 		C3E193272A0152FA00F85C3D /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		C3E193292A01530E00F85C3D /* JSONModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONModel.swift; sourceTree = "<group>"; };
 		C3E1932B2A01562F00F85C3D /* NewsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsRow.swift; sourceTree = "<group>"; };
+		C3E193362A01732400F85C3D /* NewsCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsCoreData.swift; sourceTree = "<group>"; };
+		C3E193372A01732400F85C3D /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		C3E1933B2A01733100F85C3D /* News.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = News.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +51,7 @@
 		C3E193062A01519400F85C3D = {
 			isa = PBXGroup;
 			children = (
+				C3E1933D2A01733B00F85C3D /* CoreData */,
 				C3E193112A01519400F85C3D /* NewsApi */,
 				C3E193102A01519400F85C3D /* Products */,
 			);
@@ -96,6 +103,16 @@
 				C3E193292A01530E00F85C3D /* JSONModel.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		C3E1933D2A01733B00F85C3D /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				C3E193362A01732400F85C3D /* NewsCoreData.swift */,
+				C3E193372A01732400F85C3D /* CoreDataManager.swift */,
+				C3E1933A2A01733100F85C3D /* NewsCoreData.xcdatamodeld */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,8 +189,11 @@
 				C3E193152A01519400F85C3D /* ContentView.swift in Sources */,
 				C3E193222A01520600F85C3D /* ViewModel.swift in Sources */,
 				C3E193242A0152A000F85C3D /* ListViewModel.swift in Sources */,
+				C3E193382A01732400F85C3D /* NewsCoreData.swift in Sources */,
 				C3E193132A01519400F85C3D /* NewsApiApp.swift in Sources */,
+				C3E193392A01732400F85C3D /* CoreDataManager.swift in Sources */,
 				C3E1932C2A01562F00F85C3D /* NewsRow.swift in Sources */,
+				C3E1933C2A01733100F85C3D /* NewsCoreData.xcdatamodeld in Sources */,
 				C3E1932A2A01530E00F85C3D /* JSONModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -377,6 +397,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C3E1933A2A01733100F85C3D /* NewsCoreData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C3E1933B2A01733100F85C3D /* News.xcdatamodel */,
+			);
+			currentVersion = C3E1933B2A01733100F85C3D /* News.xcdatamodel */;
+			path = NewsCoreData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C3E193072A01519400F85C3D /* Project object */;
 }
