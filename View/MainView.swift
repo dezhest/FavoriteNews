@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct ContentView : View {
-    @StateObject var model: ListViewModel = ListViewModel()
-    @State private var selectedTab = 0
+struct MainView : View {
+    @StateObject var viewModel: MainViewModel = MainViewModel()
+    @State var selectedTab = 0
     var body: some View {
-            TabView(selection: $selectedTab) {
-                List(model.articles) { article in
-                    NewsRow(article: article)
+        TabView(selection: $selectedTab) {
+            List(viewModel.model) { article in
+                NewsRow(article: article)
                         .navigationTitle(Text("News"))
                 }
                 .tabItem {
@@ -26,11 +26,12 @@ struct ContentView : View {
                     }
                     .tag(1)
             }
+        .environmentObject(viewModel)
         }
     }
-struct ContentView_Previews: PreviewProvider {
+struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        MainView()
     }
 }
 

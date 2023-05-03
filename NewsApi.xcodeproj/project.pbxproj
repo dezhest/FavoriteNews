@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		C375D37F2A027E9A00D536EB /* FavoritedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C375D37E2A027E9A00D536EB /* FavoritedView.swift */; };
+		C375D38D2A03007C00D536EB /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C375D38C2A03007C00D536EB /* MainModel.swift */; };
 		C3E193132A01519400F85C3D /* NewsApiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E193122A01519400F85C3D /* NewsApiApp.swift */; };
-		C3E193152A01519400F85C3D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E193142A01519400F85C3D /* ContentView.swift */; };
+		C3E193152A01519400F85C3D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E193142A01519400F85C3D /* MainView.swift */; };
 		C3E193172A01519600F85C3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3E193162A01519600F85C3D /* Assets.xcassets */; };
 		C3E1931A2A01519600F85C3D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3E193192A01519600F85C3D /* Preview Assets.xcassets */; };
-		C3E193222A01520600F85C3D /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E193212A01520600F85C3D /* ViewModel.swift */; };
-		C3E193242A0152A000F85C3D /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E193232A0152A000F85C3D /* ListViewModel.swift */; };
+		C3E193242A0152A000F85C3D /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E193232A0152A000F85C3D /* MainViewModel.swift */; };
 		C3E193282A0152FA00F85C3D /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E193272A0152FA00F85C3D /* NetworkService.swift */; };
 		C3E1932A2A01530E00F85C3D /* JSONModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E193292A01530E00F85C3D /* JSONModel.swift */; };
 		C3E1932C2A01562F00F85C3D /* NewsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E1932B2A01562F00F85C3D /* NewsRow.swift */; };
@@ -24,13 +24,13 @@
 
 /* Begin PBXFileReference section */
 		C375D37E2A027E9A00D536EB /* FavoritedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritedView.swift; sourceTree = "<group>"; };
+		C375D38C2A03007C00D536EB /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		C3E1930F2A01519400F85C3D /* NewsApi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3E193122A01519400F85C3D /* NewsApiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsApiApp.swift; sourceTree = "<group>"; };
-		C3E193142A01519400F85C3D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C3E193142A01519400F85C3D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		C3E193162A01519600F85C3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C3E193192A01519600F85C3D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		C3E193212A01520600F85C3D /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
-		C3E193232A0152A000F85C3D /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		C3E193232A0152A000F85C3D /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		C3E193272A0152FA00F85C3D /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		C3E193292A01530E00F85C3D /* JSONModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONModel.swift; sourceTree = "<group>"; };
 		C3E1932B2A01562F00F85C3D /* NewsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsRow.swift; sourceTree = "<group>"; };
@@ -50,12 +50,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C375D38B2A03003800D536EB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C375D38C2A03007C00D536EB /* MainModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		C3E193062A01519400F85C3D = {
 			isa = PBXGroup;
 			children = (
 				C3E193122A01519400F85C3D /* NewsApiApp.swift */,
-				C3E1933D2A01733B00F85C3D /* CoreData */,
+				C375D38B2A03003800D536EB /* Model */,
 				C3E193112A01519400F85C3D /* View */,
+				C3E193202A0151F200F85C3D /* ViewModel */,
+				C3E193262A0152E200F85C3D /* Network */,
+				C3E193182A01519600F85C3D /* Preview Content */,
+				C3E1933D2A01733B00F85C3D /* CoreData */,
 				C3E193102A01519400F85C3D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -71,13 +83,9 @@
 		C3E193112A01519400F85C3D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C3E193142A01519400F85C3D /* MainView.swift */,
 				C375D37E2A027E9A00D536EB /* FavoritedView.swift */,
-				C3E193142A01519400F85C3D /* ContentView.swift */,
 				C3E1932B2A01562F00F85C3D /* NewsRow.swift */,
-				C3E193262A0152E200F85C3D /* Network */,
-				C3E193202A0151F200F85C3D /* ViewModel */,
-				C3E193162A01519600F85C3D /* Assets.xcassets */,
-				C3E193182A01519600F85C3D /* Preview Content */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -85,6 +93,7 @@
 		C3E193182A01519600F85C3D /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				C3E193162A01519600F85C3D /* Assets.xcassets */,
 				C3E193192A01519600F85C3D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -93,10 +102,10 @@
 		C3E193202A0151F200F85C3D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				C3E193212A01520600F85C3D /* ViewModel.swift */,
-				C3E193232A0152A000F85C3D /* ListViewModel.swift */,
+				C3E193232A0152A000F85C3D /* MainViewModel.swift */,
 			);
-			path = ViewModel;
+			name = ViewModel;
+			path = View/ViewModel;
 			sourceTree = "<group>";
 		};
 		C3E193262A0152E200F85C3D /* Network */ = {
@@ -105,7 +114,8 @@
 				C3E193272A0152FA00F85C3D /* NetworkService.swift */,
 				C3E193292A01530E00F85C3D /* JSONModel.swift */,
 			);
-			path = Network;
+			name = Network;
+			path = View/Network;
 			sourceTree = "<group>";
 		};
 		C3E1933D2A01733B00F85C3D /* CoreData */ = {
@@ -189,13 +199,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3E193282A0152FA00F85C3D /* NetworkService.swift in Sources */,
-				C3E193152A01519400F85C3D /* ContentView.swift in Sources */,
+				C3E193152A01519400F85C3D /* MainView.swift in Sources */,
 				C375D37F2A027E9A00D536EB /* FavoritedView.swift in Sources */,
-				C3E193222A01520600F85C3D /* ViewModel.swift in Sources */,
-				C3E193242A0152A000F85C3D /* ListViewModel.swift in Sources */,
+				C3E193242A0152A000F85C3D /* MainViewModel.swift in Sources */,
 				C3E193382A01732400F85C3D /* NewsCoreData.swift in Sources */,
 				C3E193132A01519400F85C3D /* NewsApiApp.swift in Sources */,
 				C3E193392A01732400F85C3D /* CoreDataManager.swift in Sources */,
+				C375D38D2A03007C00D536EB /* MainModel.swift in Sources */,
 				C3E1932C2A01562F00F85C3D /* NewsRow.swift in Sources */,
 				C3E1933C2A01733100F85C3D /* NewsCoreData.xcdatamodeld in Sources */,
 				C3E1932A2A01530E00F85C3D /* JSONModel.swift in Sources */,
@@ -326,7 +336,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"NewsApi/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = V3DND9277P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -356,7 +366,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"NewsApi/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = V3DND9277P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

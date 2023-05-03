@@ -13,7 +13,7 @@ struct NewsRow: View {
     @State private var isTapped = false
     @State private var isImageShown = true
     let fetchRequest = NSFetchRequest<NewsCoreData>(entityName: "NewsCoreData")
-    var article: ViewModel
+    var article: MainModel
     
     var body: some View {
         HStack {
@@ -116,7 +116,7 @@ struct NewsRow: View {
         CoreDataManager.instance.saveContext()
     }
     
-    func deleteFromCoreData(article: ViewModel) {
+    func deleteFromCoreData(article: MainModel) {
         let fetchRequest: NSFetchRequest<NewsCoreData> = NewsCoreData.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "title == %@", article.title)
         guard let result = try? CoreDataManager.instance.managedObjectContext.fetch(fetchRequest).first else { return }
@@ -153,7 +153,7 @@ struct NewsRow: View {
 
 struct NewsRow_Previews: PreviewProvider {
     static var previews: some View {
-        NewsRow(article: ListViewModel().articles[0])
+        NewsRow(article: MainViewModel().model[0])
         
     }
 }

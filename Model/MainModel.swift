@@ -1,13 +1,14 @@
 //
-//  ViewModel.swift
+//  MainModel.swift
 //  NewsApi
 //
-//  Created by Denis Zhesterev on 02.05.2023.
+//  Created by Denis Zhesterev on 04.05.2023.
 //
 
-import SwiftUI
+import Foundation
+import UIKit
 
-struct ViewModel: Identifiable {
+struct MainModel: Identifiable {
     
     let id = UUID()
     
@@ -42,4 +43,3 @@ struct ViewModel: Identifiable {
             }
         }
 }
-
