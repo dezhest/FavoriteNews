@@ -18,12 +18,15 @@ struct NewsRow: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                
                 VStack(alignment: .leading, spacing: 10) {
                     if article.image != nil {
                         Image(uiImage: article.image!)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
+                    } else {
+                        ProgressView()
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .progressViewStyle(CircularProgressViewStyle())
                     }
                     Spacer()
                     Text(article.title)
