@@ -14,14 +14,14 @@ struct FavoritedView: View {
     let imageCache = NSCache<NSString, UIImage>()
     var body: some View {
         VStack {
-            if news.isEmpty {
-                Text("No news available")
+            if news.count == 0 {
+                Text("Add your favorite news")
                     .font(.title)
                     .foregroundColor(.gray)
-                    .padding(.top)
+                    .frame(maxHeight: .infinity, alignment: .center)
             }
                 List {
-                    ForEach(news) { article in
+                    ForEach(news, id: \.self) { article in
                         HStack {
                             VStack(alignment: .leading) {
                                 VStack(alignment: .leading, spacing: 10) {

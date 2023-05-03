@@ -70,8 +70,6 @@ struct NewsRow: View {
                                 .foregroundColor(.yellow)
                                 .padding(10)
                                 .onTapGesture {
-                                    print("до \(isTapped)")
-                                    print("до \(checkCoreDataContainDuplicate(image: article.title))")
                                     if !checkCoreDataContainDuplicate(image: article.title) && isTapped == true {
                                         isTapped = true
                                     } else {
@@ -83,8 +81,6 @@ struct NewsRow: View {
                                     } else {
                                         saveToCoreData()
                                     }
-                                    print("после \(isTapped)")
-                                    print("после \(checkCoreDataContainDuplicate(image: article.title))")
                                 }
                                 .frame(maxWidth: .infinity, alignment: .trailing)
                         } else {

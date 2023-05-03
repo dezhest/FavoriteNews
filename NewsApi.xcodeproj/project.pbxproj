@@ -53,8 +53,9 @@
 		C3E193062A01519400F85C3D = {
 			isa = PBXGroup;
 			children = (
+				C3E193122A01519400F85C3D /* NewsApiApp.swift */,
 				C3E1933D2A01733B00F85C3D /* CoreData */,
-				C3E193112A01519400F85C3D /* NewsApi */,
+				C3E193112A01519400F85C3D /* View */,
 				C3E193102A01519400F85C3D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -67,19 +68,18 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C3E193112A01519400F85C3D /* NewsApi */ = {
+		C3E193112A01519400F85C3D /* View */ = {
 			isa = PBXGroup;
 			children = (
 				C375D37E2A027E9A00D536EB /* FavoritedView.swift */,
-				C3E193122A01519400F85C3D /* NewsApiApp.swift */,
 				C3E193142A01519400F85C3D /* ContentView.swift */,
 				C3E1932B2A01562F00F85C3D /* NewsRow.swift */,
-				C3E193262A0152E200F85C3D /* Data */,
+				C3E193262A0152E200F85C3D /* Network */,
 				C3E193202A0151F200F85C3D /* ViewModel */,
 				C3E193162A01519600F85C3D /* Assets.xcassets */,
 				C3E193182A01519600F85C3D /* Preview Content */,
 			);
-			path = NewsApi;
+			path = View;
 			sourceTree = "<group>";
 		};
 		C3E193182A01519600F85C3D /* Preview Content */ = {
@@ -99,13 +99,13 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		C3E193262A0152E200F85C3D /* Data */ = {
+		C3E193262A0152E200F85C3D /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				C3E193272A0152FA00F85C3D /* NetworkService.swift */,
 				C3E193292A01530E00F85C3D /* JSONModel.swift */,
 			);
-			path = Data;
+			path = Network;
 			sourceTree = "<group>";
 		};
 		C3E1933D2A01733B00F85C3D /* CoreData */ = {
