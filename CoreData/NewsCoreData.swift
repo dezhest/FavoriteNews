@@ -19,7 +19,8 @@ extension NewsCoreData {
     @NSManaged public var title: String
     @NSManaged public var urlToImage: String?
     @NSManaged public var publishedAt: String
-    @NSManaged var uiImage: UIImage?
+    @NSManaged public var uiImage: UIImage?
+    @NSManaged public var id: UUID
 
 }
 

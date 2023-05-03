@@ -11,10 +11,10 @@ struct ContentView : View {
     @StateObject var model: ListViewModel = ListViewModel()
     @State private var selectedTab = 0
     var body: some View {
-        NavigationView {
             TabView(selection: $selectedTab) {
                 List(model.articles) { article in
                     NewsRow(article: article)
+                        .navigationTitle(Text("News"))
                 }
                 .tabItem {
                     Label("News", systemImage: "newspaper")
@@ -26,12 +26,8 @@ struct ContentView : View {
                     }
                     .tag(1)
             }
-            .navigationTitle(Text("News"))
         }
     }
-    
-    
-}
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
