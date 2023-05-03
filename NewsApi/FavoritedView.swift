@@ -11,16 +11,19 @@ import CoreData
 struct FavoritedView: View {
     let fetchRequest = NSFetchRequest<NewsCoreData>(entityName: "NewsCoreData")
     @State private var news: [NewsCoreData] = []
+    let imageCache = NSCache<NSString, UIImage>()
     var body: some View {
         List(news, id: \.self) { article in
             HStack {
                 VStack(alignment: .leading) {
-                    
                     VStack(alignment: .leading, spacing: 10) {
-                        if let imageUrlString = article.urlToImage, let imageUrl = URL(string: imageUrlString), let imageData = try? Data(contentsOf: imageUrl), let uiImage = UIImage(data: imageData) {
-                            Image(uiImage: uiImage)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
+                        if let imageUrlString = article.urlToImage, let imageUrl = URL(string: imageUrlString) {
+                            AsyncImage(url: imageUrl) { image in
+                                image.resizable()
+                                    .aspectRatio(contentMode: .fit)
+                            } placeholder: {
+                                ProgressView()
+                            }
                         }
                         Spacer()
                         Text(article.title)
@@ -42,6 +45,7 @@ struct FavoritedView: View {
                 }
             }
         }
+
         .id(UUID())
         .onAppear {
             do {
