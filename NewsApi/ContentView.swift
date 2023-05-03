@@ -20,7 +20,7 @@ struct ContentView : View {
                     Label("News", systemImage: "newspaper")
                 }
                 .tag(0)
-                Image(systemName: "globe")
+                FavoritedView()
                     .tabItem {
                         Label("Favorite", systemImage: "star.fill")
                     }

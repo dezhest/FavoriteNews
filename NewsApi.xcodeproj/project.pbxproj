@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C375D37F2A027E9A00D536EB /* FavoritedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C375D37E2A027E9A00D536EB /* FavoritedView.swift */; };
 		C3E193132A01519400F85C3D /* NewsApiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E193122A01519400F85C3D /* NewsApiApp.swift */; };
 		C3E193152A01519400F85C3D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E193142A01519400F85C3D /* ContentView.swift */; };
 		C3E193172A01519600F85C3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3E193162A01519600F85C3D /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C375D37E2A027E9A00D536EB /* FavoritedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritedView.swift; sourceTree = "<group>"; };
 		C3E1930F2A01519400F85C3D /* NewsApi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3E193122A01519400F85C3D /* NewsApiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsApiApp.swift; sourceTree = "<group>"; };
 		C3E193142A01519400F85C3D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 		C3E193112A01519400F85C3D /* NewsApi */ = {
 			isa = PBXGroup;
 			children = (
+				C375D37E2A027E9A00D536EB /* FavoritedView.swift */,
 				C3E193122A01519400F85C3D /* NewsApiApp.swift */,
 				C3E193142A01519400F85C3D /* ContentView.swift */,
 				C3E1932B2A01562F00F85C3D /* NewsRow.swift */,
@@ -187,6 +190,7 @@
 			files = (
 				C3E193282A0152FA00F85C3D /* NetworkService.swift in Sources */,
 				C3E193152A01519400F85C3D /* ContentView.swift in Sources */,
+				C375D37F2A027E9A00D536EB /* FavoritedView.swift in Sources */,
 				C3E193222A01520600F85C3D /* ViewModel.swift in Sources */,
 				C3E193242A0152A000F85C3D /* ListViewModel.swift in Sources */,
 				C3E193382A01732400F85C3D /* NewsCoreData.swift in Sources */,

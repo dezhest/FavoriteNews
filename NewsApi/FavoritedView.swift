@@ -6,11 +6,52 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct FavoritedView: View {
-    
+    let fetchRequest = NSFetchRequest<NewsCoreData>(entityName: "NewsCoreData")
+    @State private var news: [NewsCoreData] = []
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List(news, id: \.self) { article in
+            HStack {
+                VStack(alignment: .leading) {
+                    
+                    VStack(alignment: .leading, spacing: 10) {
+                        if let imageUrlString = article.urlToImage, let imageUrl = URL(string: imageUrlString), let imageData = try? Data(contentsOf: imageUrl), let uiImage = UIImage(data: imageData) {
+                            Image(uiImage: uiImage)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                        }
+                        Spacer()
+                        Text(article.title)
+                            .lineLimit(nil)
+                            .font(.title2)
+                    }
+                    .padding(.top)
+                    .padding(.bottom)
+                    
+                    HStack(alignment: .firstTextBaseline) {
+                        if let publishedAt = article.publishedAt {
+                            Text(publishedAt)
+                                .foregroundColor(.secondary)
+                                .lineLimit(1)
+                        }
+                        Spacer()
+                    }
+                    .padding(.top)
+                }
+            }
+        }
+        .id(UUID())
+        .onAppear {
+            do {
+                let results = try CoreDataManager.instance.managedObjectContext.fetch(fetchRequest)
+                news = results
+            }
+            catch {
+                print("Error fetching data")
+            }
+        }
     }
 }
 
