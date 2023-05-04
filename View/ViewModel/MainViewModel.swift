@@ -10,7 +10,6 @@ import CoreData
 
 class MainViewModel: ObservableObject {
     @Published var model = [MainModel]()
-
     @Published var news: [NewsCoreData] = []
     init() {
         fetchNetworkData()
