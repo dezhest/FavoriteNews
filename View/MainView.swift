@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainView : View {
-    @StateObject var viewModel: MainViewModel = MainViewModel()
+    @StateObject var viewModel = MainViewModel()
     @State var selectedTab = 0
     var body: some View {
         TabView(selection: $selectedTab) {

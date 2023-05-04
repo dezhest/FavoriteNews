@@ -9,12 +9,10 @@ import SwiftUI
 import CoreData
 
 struct NewsRow: View {
-    @State private var showOverlay = false
-    @State private var isTapped = false
-    @State private var isImageShown = true
-    let fetchRequest = NSFetchRequest<NewsCoreData>(entityName: "NewsCoreData")
+    @EnvironmentObject var viewModel: MainViewModel
+    @State var isTapped = false
+    @State var isImageShown = true
     var article: MainModel
-    
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
@@ -45,41 +43,39 @@ struct NewsRow: View {
                         }
                         Spacer()
                     }
-                    if !isTapped && !checkCoreDataContainDuplicate(image: article.title) {
+                    if !isTapped && !viewModel.checkCoreDataContainDuplicate(image: article.title, article: article) {
                         Image(systemName: "star")
                             .resizable()
                             .frame(width: 25, height: 25)
                             .foregroundColor(.blue)
                             .padding(10)
                             .onTapGesture {
-                                print(isTapped)
-                                print(checkCoreDataContainDuplicate(image: article.title))
                                 isTapped = true
-                                if checkCoreDataContainDuplicate(image: article.title) {
-                                    deleteFromCoreData(article: article)
+                                if viewModel.checkCoreDataContainDuplicate(image: article.title, article: article) {
+                                    viewModel.deleteFromCoreData(article: article)
                                 } else {
-                                    saveToCoreData()
+                                    viewModel.saveToCoreData(article: article)
                                 }
                             }
                             .frame(maxWidth: .infinity, alignment: .trailing)
                     } else {
-                        if isTapped && checkCoreDataContainDuplicate(image: article.title) {
+                        if isTapped && viewModel.checkCoreDataContainDuplicate(image: article.title, article: article) {
                             Image(systemName: "star.fill")
                                 .resizable()
                                 .frame(width: 25, height: 25)
                                 .foregroundColor(.yellow)
                                 .padding(10)
                                 .onTapGesture {
-                                    if !checkCoreDataContainDuplicate(image: article.title) && isTapped == true {
+                                    if !viewModel.checkCoreDataContainDuplicate(image: article.title, article: article) && isTapped == true {
                                         isTapped = true
                                     } else {
                                         isTapped = false
                                     }
                                     
-                                    if checkCoreDataContainDuplicate(image: article.title) {
-                                        deleteFromCoreData(article: article)
+                                    if viewModel.checkCoreDataContainDuplicate(image: article.title, article: article) {
+                                        viewModel.deleteFromCoreData(article: article)
                                     } else {
-                                        saveToCoreData()
+                                        viewModel.saveToCoreData(article: article)
                                     }
                                 }
                                 .frame(maxWidth: .infinity, alignment: .trailing)
@@ -92,10 +88,10 @@ struct NewsRow: View {
                                     .padding(10)
                                     .onTapGesture {
                                         isImageShown = false
-                                        if checkCoreDataContainDuplicate(image: article.title) {
-                                            deleteFromCoreData(article: article)
+                                        if viewModel.checkCoreDataContainDuplicate(image: article.title, article: article) {
+                                            viewModel.deleteFromCoreData(article: article)
                                         } else {
-                                            saveToCoreData()
+                                            viewModel.saveToCoreData(article: article)
                                         }
                                     }
                                     .frame(maxWidth: .infinity, alignment: .trailing)
@@ -107,48 +103,6 @@ struct NewsRow: View {
             }
         }
     }
-    func saveToCoreData() {
-        let newsInfo = NewsCoreData()
-        newsInfo.id = article.id
-        newsInfo.title = article.title
-        newsInfo.urlToImage = article.urlToImage
-        newsInfo.publishedAt = article.publishedAt
-        CoreDataManager.instance.saveContext()
-    }
-    
-    func deleteFromCoreData(article: MainModel) {
-        let fetchRequest: NSFetchRequest<NewsCoreData> = NewsCoreData.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "title == %@", article.title)
-        guard let result = try? CoreDataManager.instance.managedObjectContext.fetch(fetchRequest).first else { return }
-        CoreDataManager.instance.managedObjectContext.delete(result)
-        CoreDataManager.instance.saveContext()
-    }
-    
-    func checkCoreDataContainDuplicate(image: String) -> Bool {
-        var contains = false
-        for i in fetchData() {
-            if i.urlToImage == article.urlToImage {
-                contains = true
-            }
-        }
-        if !contains {
-            return false
-        } else {
-            return true
-        }
-    }
-    
-    func fetchData() -> [NewsCoreData]{
-        do {
-            let results = try CoreDataManager.instance.managedObjectContext.fetch(fetchRequest)
-            return results
-        }
-        catch {
-            print("Error fetching data")
-            return []
-        }
-    }
-    
 }
 
 struct NewsRow_Previews: PreviewProvider {

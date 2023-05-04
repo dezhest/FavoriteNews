@@ -9,19 +9,17 @@ import SwiftUI
 import CoreData
 
 struct FavoritedView: View {
-    let fetchRequest = NSFetchRequest<NewsCoreData>(entityName: "NewsCoreData")
-    @State private var news: [NewsCoreData] = []
-    let imageCache = NSCache<NSString, UIImage>()
+    @EnvironmentObject var viewModel: MainViewModel
     var body: some View {
         VStack {
-            if news.count == 0 {
+            if viewModel.news.count == 0 {
                 Text("Add your favorite news")
                     .font(.title)
                     .foregroundColor(.gray)
                     .frame(maxHeight: .infinity, alignment: .center)
             }
                 List {
-                    ForEach(news, id: \.self) { article in
+                    ForEach(viewModel.news, id: \.self) { article in
                         HStack {
                             VStack(alignment: .leading) {
                                 VStack(alignment: .leading, spacing: 10) {
@@ -60,13 +58,7 @@ struct FavoritedView: View {
                 }
                 .id(UUID())
                 .onAppear {
-                    do {
-                        let results = try CoreDataManager.instance.managedObjectContext.fetch(fetchRequest)
-                        news = results
-                    }
-                    catch {
-                        print("Error fetching data")
-                    }
+                    viewModel.onAppearfetchDataFavorited()
                 }
             }
     }
