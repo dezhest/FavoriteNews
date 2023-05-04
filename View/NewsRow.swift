@@ -9,18 +9,19 @@ import SwiftUI
 import CoreData
 
 struct NewsRow: View {
+    @EnvironmentObject var viewModel: MainViewModel
     @State private var showOverlay = false
     @State private var isTapped = false
     @State private var isImageShown = true
     let fetchRequest = NSFetchRequest<NewsCoreData>(entityName: "NewsCoreData")
-    var article: MainModel
+
     
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
                 VStack(alignment: .leading, spacing: 10) {
-                    if article.image != nil {
-                        Image(uiImage: article.image!)
+                    if viewModel.article?.image != nil {
+                        Image(uiImage: viewModel.article?.image! ?? UIImage())
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                     } else {
@@ -29,7 +30,7 @@ struct NewsRow: View {
                             .progressViewStyle(CircularProgressViewStyle())
                     }
                     Spacer()
-                    Text(article.title)
+                    Text(viewModel.article?.title ?? "")
                         .lineLimit(nil)
                         .font(.title2)
                 }
@@ -38,46 +39,44 @@ struct NewsRow: View {
                 
                 ZStack {
                     HStack(alignment: .firstTextBaseline) {
-                        if let publishedAt = article.publishedAt {
+                        if let publishedAt = viewModel.article?.publishedAt {
                             Text(publishedAt)
                                 .foregroundColor(.secondary)
                                 .lineLimit(1)
                         }
                         Spacer()
                     }
-                    if !isTapped && !checkCoreDataContainDuplicate(image: article.title) {
+                    if !isTapped && !checkCoreDataContainDuplicate(image: viewModel.article?.title ?? "") {
                         Image(systemName: "star")
                             .resizable()
                             .frame(width: 25, height: 25)
                             .foregroundColor(.blue)
                             .padding(10)
                             .onTapGesture {
-                                print(isTapped)
-                                print(checkCoreDataContainDuplicate(image: article.title))
                                 isTapped = true
-                                if checkCoreDataContainDuplicate(image: article.title) {
-                                    deleteFromCoreData(article: article)
+                                if checkCoreDataContainDuplicate(image: viewModel.article?.title ?? "") {
+                                    deleteFromCoreData(article: viewModel.article!)
                                 } else {
                                     saveToCoreData()
                                 }
                             }
                             .frame(maxWidth: .infinity, alignment: .trailing)
                     } else {
-                        if isTapped && checkCoreDataContainDuplicate(image: article.title) {
+                        if isTapped && checkCoreDataContainDuplicate(image: viewModel.article?.title ?? "") {
                             Image(systemName: "star.fill")
                                 .resizable()
                                 .frame(width: 25, height: 25)
                                 .foregroundColor(.yellow)
                                 .padding(10)
                                 .onTapGesture {
-                                    if !checkCoreDataContainDuplicate(image: article.title) && isTapped == true {
+                                    if !checkCoreDataContainDuplicate(image: viewModel.article?.title ?? "" ) && isTapped == true {
                                         isTapped = true
                                     } else {
                                         isTapped = false
                                     }
                                     
-                                    if checkCoreDataContainDuplicate(image: article.title) {
-                                        deleteFromCoreData(article: article)
+                                    if checkCoreDataContainDuplicate(image: viewModel.article?.title ?? "") {
+                                        deleteFromCoreData(article: viewModel.article!)
                                     } else {
                                         saveToCoreData()
                                     }
@@ -92,8 +91,8 @@ struct NewsRow: View {
                                     .padding(10)
                                     .onTapGesture {
                                         isImageShown = false
-                                        if checkCoreDataContainDuplicate(image: article.title) {
-                                            deleteFromCoreData(article: article)
+                                        if checkCoreDataContainDuplicate(image: viewModel.article?.title ?? "") {
+                                            deleteFromCoreData(article: viewModel.article!)
                                         } else {
                                             saveToCoreData()
                                         }
@@ -109,10 +108,9 @@ struct NewsRow: View {
     }
     func saveToCoreData() {
         let newsInfo = NewsCoreData()
-        newsInfo.id = article.id
-        newsInfo.title = article.title
-        newsInfo.urlToImage = article.urlToImage
-        newsInfo.publishedAt = article.publishedAt
+        newsInfo.title = viewModel.article?.title ?? ""
+        newsInfo.urlToImage = viewModel.article?.urlToImage
+        newsInfo.publishedAt = viewModel.article?.publishedAt ?? ""
         CoreDataManager.instance.saveContext()
     }
     
@@ -127,7 +125,7 @@ struct NewsRow: View {
     func checkCoreDataContainDuplicate(image: String) -> Bool {
         var contains = false
         for i in fetchData() {
-            if i.urlToImage == article.urlToImage {
+            if i.urlToImage == viewModel.article?.urlToImage {
                 contains = true
             }
         }
@@ -153,8 +151,7 @@ struct NewsRow: View {
 
 struct NewsRow_Previews: PreviewProvider {
     static var previews: some View {
-        NewsRow(article: MainViewModel().model[0])
-        
+        NewsRow()
     }
 }
 

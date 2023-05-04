@@ -13,7 +13,7 @@ struct MainView : View {
     var body: some View {
         TabView(selection: $selectedTab) {
             List(viewModel.model) { article in
-                NewsRow(article: article)
+                NewsRow()
                         .navigationTitle(Text("News"))
                 }
                 .tabItem {

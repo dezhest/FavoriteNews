@@ -9,7 +9,7 @@ import Foundation
 
 class MainViewModel: ObservableObject {
     @Published var model = [MainModel]()
-    
+    @Published var article: MainModel?
     init() {
         fetchData()
     }
